@@ -28,7 +28,8 @@ namespace WriteItDown
             services.AddControllersWithViews();
 
             services.AddDbContext<WriteItDownContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("WriteItDownContext")));
+                    options.UseMySql(Configuration.GetConnectionString("WriteItDownContext"), builder =>
+                        builder.MigrationsAssembly("WriteItDown")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
